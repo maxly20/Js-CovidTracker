@@ -17,25 +17,25 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(0, 0, 0, 0.909);
+  background-color: #f5f6fa;
 }
 
 .container {
   min-width: 290px;
   max-width: 1170px;
-  margin: 15px 10px;
+  margin: 1rem;
+  margin-top: 5rem;
+  padding: 3rem;
   text-align: center;
-  border: 1px solid #777;
   border-radius: 5px;
+  -webkit-box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
   text-transform: uppercase;
   letter-spacing: 2px;
-}
-
-h2 {
-  color: darkblue;
+  color: #df1212;
 }
 
 h3 {
@@ -44,6 +44,7 @@ h3 {
 
 #date {
   color: teal;
+  margin: 2rem;
 }
 
 form input,
@@ -60,7 +61,7 @@ form button {
 }
 
 #name-country {
-  color: #555;
+  color: #e814c5;
   margin-top: 1.2rem;
 }
 
@@ -82,10 +83,17 @@ form button {
   border: 1px solid #ccc;
   padding: 1rem;
   letter-spacing: 2px;
+  -webkit-box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .content .box:hover {
-  background: #eee4;
+  -webkit-transform: translate(-0.8px, -1.2px);
+          transform: translate(-0.8px, -1.2px);
+  -webkit-box-shadow: 0 0.5px 8px -4px rgba(0, 0, 0, 0.8);
+          box-shadow: 0 0.5px 8px -4px rgba(0, 0, 0, 0.8);
 }
 
 .content .box p {
@@ -95,7 +103,7 @@ form button {
 
 .confirmed h3,
 .confirmed i {
-  color: crimson;
+  color: #cc1034;
 }
 
 .recovered h3,

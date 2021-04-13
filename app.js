@@ -12,7 +12,7 @@ let dataChart = [];
 const API_URL = 'https://api.covid19api.com/summary';
 
 const covid = async country => {
-  countries.innerHTML = `<option value="World">World</option>`;
+  countries.innerHTML = `<option value="Worldwide">Worldwide</option>`;
   resetValue(confirmed);
   resetValue(deaths);
   resetValue(recovered);
@@ -43,7 +43,7 @@ const covid = async country => {
         NewRecovered.toLocaleString()
       );
 
-      nameCountry.textContent = 'The World';
+      nameCountry.textContent = 'Worldwide';
       dataChart = [TotalConfirmed, TotalDeaths, TotalRecovered];
     }
 
@@ -119,16 +119,10 @@ const drawChart = data => {
           label: nameCountry.textContent,
           data: data,
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-          ],
-          borderWidth: 1,
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(0, 0, 0, 0.5)',
+            'rgba(1, 128, 3, 0.5)',
+          ]
         },
       ],
     },
