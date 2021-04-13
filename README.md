@@ -4,5 +4,5 @@ A web app built with covid19 API, used to check current Covid cases around the w
 
 Deployed live at https://maxly-js-covidtracker.netlify.app
 
-![](SitePreview.jpg)
+![](SitePreview.png)
 
