@@ -37,6 +37,7 @@ const covid = async country => {
       newUpdate(NewConfirmed, NewDeaths, NewRecovered);
 
       nameCountry.textContent = 'The World';
+      dataChart = [TotalConfirmed, TotalDeaths, TotalRecovered];
     }
 
     data.Countries.forEach(item => {
@@ -49,6 +50,11 @@ const covid = async country => {
         newUpdate(item.NewConfirmed, item.NewDeaths, item.NewRecovered);
 
         nameCountry.textContent = item.Country;
+        dataChart = [
+          item.TotalConfirmed,
+          item.TotalDeaths,
+          item.TotalRecovered,
+        ];
       }
     });
   } else {
