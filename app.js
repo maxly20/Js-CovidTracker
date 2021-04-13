@@ -32,8 +32,16 @@ const covid = async country => {
         NewRecovered,
       } = data.Global;
 
-      total(TotalConfirmed, TotalDeaths, TotalRecovered);
-      newUpdate(NewConfirmed, NewDeaths, NewRecovered);
+      total(
+        TotalConfirmed.toLocaleString(),
+        TotalDeaths.toLocaleString(),
+        TotalRecovered.toLocaleString()
+      );
+      newUpdate(
+        NewConfirmed.toLocaleString(),
+        NewDeaths.toLocaleString(),
+        NewRecovered.toLocaleString()
+      );
 
       nameCountry.textContent = 'The World';
       dataChart = [TotalConfirmed, TotalDeaths, TotalRecovered];
