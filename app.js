@@ -28,15 +28,9 @@ const covid = async country => {
         NewDeaths,
         NewRecovered,
       } = data.Global;
-      // TOTAL NEW CASE
-      confirmed.children[1].textContent = TotalConfirmed;
-      confirmed.children[2].textContent = NewConfirmed;
-      // TOTAL DEATHS
-      deaths.children[1].textContent = TotalDeaths;
-      deaths.children[2].textContent = NewDeaths;
-      // TOTAL RECOVERED
-      recovered.children[1].textContent = TotalRecovered;
-      recovered.children[2].textContent = NewRecovered;
+
+      total(TotalConfirmed, TotalDeaths, TotalRecovered);
+      newUpdate(NewConfirmed, NewDeaths, NewRecovered);
 
       nameCountry.textContent = 'The World';
     }
@@ -47,15 +41,8 @@ const covid = async country => {
       option.textContent = item.Country;
       countries.appendChild(option);
       if (country === item.Country) {
-        // TOTAL NEW CASE
-        confirmed.children[1].textContent = item.TotalConfirmed;
-        confirmed.children[2].textContent = item.NewConfirmed;
-        // TOTAL DEATHS
-        deaths.children[1].textContent = item.TotalDeaths;
-        deaths.children[2].textContent = item.NewDeaths;
-        // TOTAL RECOVERED
-        recovered.children[1].textContent = item.TotalRecovered;
-        recovered.children[2].textContent = item.NewRecovered;
+        total(item.TotalConfirmed, item.TotalDeaths, item.TotalRecovered);
+        newUpdate(item.NewConfirmed, item.NewDeaths, item.NewRecovered);
 
         nameCountry.textContent = item.Country;
       }
@@ -64,6 +51,24 @@ const covid = async country => {
     chart.innerHTML = `<h2>Loading......</h2>`;
   }
 };
+
+const total = (Confirmed, Deaths, Recovered) => {
+  // TOTAL NEW CASE
+  confirmed.children[1].textContent = Confirmed;
+  // TOTAL DEATHS
+  deaths.children[1].textContent = Deaths;
+  // TOTAL RECOVERED
+  recovered.children[1].textContent = Recovered;
+};
+const newUpdate = (Confirmed, Deaths, Recovered) => {
+  // TOTAL NEW CASE
+  confirmed.children[2].textContent = Confirmed;
+  // TOTAL DEATHS
+  deaths.children[2].textContent = Deaths;
+  // TOTAL RECOVERED
+  recovered.children[2].textContent = Recovered;
+};
+
 covid(search.value);
 
 const btnSearch = document.querySelector('button');
