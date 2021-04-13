@@ -12,6 +12,10 @@ let dataChart = [];
 const API_URL = 'https://api.covid19api.com/summary';
 
 const covid = async country => {
+  countries.innerHTML = `<option value="World">World</option>`;
+  resetValue(confirmed);
+  resetValue(deaths);
+  resetValue(recovered);
   const res = await fetch(API_URL);
   const data = await res.json();
   console.log(data);
@@ -52,21 +56,40 @@ const covid = async country => {
   }
 };
 
+const speed = 100;
+const counting = (target, element) => {
+  const inc = target / speed;
+  const count = +element.textContent;
+  if (count < target) {
+    element.textContent = Math.ceil(count + inc);
+    setTimeout(() => {
+      counting(target, element);
+    }, 1);
+  } else {
+    // TOTAL NEW CASE
+    element.textContent = target;
+  }
+};
+
 const total = (Confirmed, Deaths, Recovered) => {
-  // TOTAL NEW CASE
-  confirmed.children[1].textContent = Confirmed;
+  counting(Confirmed, confirmed.children[1]);
   // TOTAL DEATHS
-  deaths.children[1].textContent = Deaths;
+  counting(Deaths, deaths.children[1]);
   // TOTAL RECOVERED
-  recovered.children[1].textContent = Recovered;
+  counting(Recovered, recovered.children[1]);
 };
 const newUpdate = (Confirmed, Deaths, Recovered) => {
   // TOTAL NEW CASE
-  confirmed.children[2].textContent = Confirmed;
+  counting(Confirmed, confirmed.children[2]);
   // TOTAL DEATHS
-  deaths.children[2].textContent = Deaths;
+  counting(Deaths, deaths.children[2]);
   // TOTAL RECOVERED
-  recovered.children[2].textContent = Recovered;
+  counting(Recovered, recovered.children[2]);
+};
+
+const resetValue = element => {
+  element.children[1].textContent = 0;
+  element.children[2].textContent = 0;
 };
 
 covid(search.value);
