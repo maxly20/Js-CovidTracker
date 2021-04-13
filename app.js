@@ -18,7 +18,6 @@ const covid = async country => {
   resetValue(recovered);
   const res = await fetch(API_URL);
   const data = await res.json();
-  console.log(data);
 
   if (res.status === 4 || res.status === 200) {
     date.textContent = new Date(data.Date).toDateString();
@@ -57,6 +56,7 @@ const covid = async country => {
         ];
       }
     });
+    drawChart(dataChart);
   } else {
     chart.innerHTML = `<h2>Loading......</h2>`;
   }
@@ -96,6 +96,42 @@ const newUpdate = (Confirmed, Deaths, Recovered) => {
 const resetValue = element => {
   element.children[1].textContent = 0;
   element.children[2].textContent = 0;
+};
+
+const drawChart = data => {
+  chart.innerHTML = '';
+  const ctx = document.createElement('canvas');
+  chart.appendChild(ctx);
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Total Confirmed', 'Total Deaths', 'Total Recovered'],
+      datasets: [
+        {
+          label: nameCountry.textContent,
+          data: data,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+          ],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
 };
 
 covid(search.value);
